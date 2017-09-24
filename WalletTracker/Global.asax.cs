@@ -1,18 +1,22 @@
 ﻿using System;
+using System.Reflection;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 using Autofac;
 using Autofac.Integration.Mvc;
 
-namespace WalletTracker.Config
+using WalletTracker.Config;
+
+namespace WalletTracker
 {
     public class Global : System.Web.HttpApplication
     {
-        private IContainer container;
-
         protected void Application_Start(object sender, EventArgs e)
         {
+            AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
             RegisterDependencies();
         }
 
@@ -49,8 +53,10 @@ namespace WalletTracker.Config
         private void RegisterDependencies()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterControllers();
-            this.container = Dependencies.CompositionRoot.RegisterDependencies(builder);
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            var container = Dependencies.CompositionRoot.RegisterDependencies(builder);
+
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }

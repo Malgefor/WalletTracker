@@ -7,20 +7,20 @@ using WalletTracker.Domain.Wallet;
 
 namespace WalletTracker.Infrastructure.Web.WalletAddressInfoProviders
 {
-    public class EtherscanClient : IEtherScanClient, IWalletInfoRepository
+    public class EthplorerClient : IEthplorerClient, IWalletInfoRepository
     {
         private readonly IWebClient webClient;
 
-        public EtherscanClient(IWebClient webClient)
+        public EthplorerClient(IWebClient webClient)
         {
             this.webClient = webClient;
         }
 
         public async Task<WalletInfo> GetWalletInfo(WalletAddress address)
         {
-            var apiKey = ConfigurationManager.AppSettings["etherscan:apikey"];
+            var apiKey = "freekey";
 
-            var url = $"https://api.etherscan.io/api?module=account&action=balance&address={address.Address}&tag=latest&apikey={apiKey}";
+            var url = $"https://api.ethplorer.io/getTokenInfo/{address.Address}?apikey={apiKey}";
 
             var result = await this.webClient.GetAsync(url);
 

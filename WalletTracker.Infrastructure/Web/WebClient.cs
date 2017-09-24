@@ -16,9 +16,9 @@ namespace WalletTracker.Infrastructure.Web
 
         public async Task<JObject> GetAsync(string url)
         {
-            var result = await this.httpClient.GetAsync(url);
+            var result = await this.httpClient.GetStringAsync(url);
 
-            return JObject.FromObject(result);
+            return JObject.Parse(result);
         }
     }
 }
