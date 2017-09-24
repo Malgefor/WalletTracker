@@ -52,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WalletTracker\WalletTracker.Frontend.csproj">
+    <ProjectReference Include="..\WalletTracker.Frontend\WalletTracker.Frontend.csproj">
       <Project>{2225169B-6047-46B0-97D4-57F7F55116BD}</Project>
       <Name>WalletTracker.Frontend</Name>
     </ProjectReference>
