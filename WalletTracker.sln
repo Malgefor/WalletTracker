@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletTracker.Frontend", "WalletTracker\WalletTracker.Frontend.csproj", "{2225169B-6047-46B0-97D4-57F7F55116BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletTracker.Frontend.Tests", "Frontend.Tests\WalletTracker.Frontend.Tests.csproj", "{925D5445-D67F-4194-818C-16D4F1AE1871}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{2ED8A169-193E-493D-94B8-4CDE64CA64A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{4139F766-8AF9-4B87-AA79-70A4F548BBFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletTracker.Domain", "WalletTracker.Domain\WalletTracker.Domain.csproj", "{31365B83-E6B8-44C5-AE86-0873B7F09709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletTracker.Infrastructure", "WalletTracker.Infrastructure\WalletTracker.Infrastructure.csproj", "{6E44D2ED-52F6-43EF-AADA-58189772D3FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletTracker.Dependencies", "WalletTracker.Dependencies\WalletTracker.Dependencies.csproj", "{334D6BBD-992F-4817-B85B-E63E501255E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2225169B-6047-46B0-97D4-57F7F55116BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2225169B-6047-46B0-97D4-57F7F55116BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2225169B-6047-46B0-97D4-57F7F55116BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2225169B-6047-46B0-97D4-57F7F55116BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{925D5445-D67F-4194-818C-16D4F1AE1871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{925D5445-D67F-4194-818C-16D4F1AE1871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{925D5445-D67F-4194-818C-16D4F1AE1871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{925D5445-D67F-4194-818C-16D4F1AE1871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31365B83-E6B8-44C5-AE86-0873B7F09709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31365B83-E6B8-44C5-AE86-0873B7F09709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31365B83-E6B8-44C5-AE86-0873B7F09709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31365B83-E6B8-44C5-AE86-0873B7F09709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E44D2ED-52F6-43EF-AADA-58189772D3FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E44D2ED-52F6-43EF-AADA-58189772D3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E44D2ED-52F6-43EF-AADA-58189772D3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E44D2ED-52F6-43EF-AADA-58189772D3FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334D6BBD-992F-4817-B85B-E63E501255E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334D6BBD-992F-4817-B85B-E63E501255E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334D6BBD-992F-4817-B85B-E63E501255E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334D6BBD-992F-4817-B85B-E63E501255E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2225169B-6047-46B0-97D4-57F7F55116BD} = {2ED8A169-193E-493D-94B8-4CDE64CA64A9}
+		{925D5445-D67F-4194-818C-16D4F1AE1871} = {2ED8A169-193E-493D-94B8-4CDE64CA64A9}
+		{31365B83-E6B8-44C5-AE86-0873B7F09709} = {4139F766-8AF9-4B87-AA79-70A4F548BBFB}
+		{6E44D2ED-52F6-43EF-AADA-58189772D3FD} = {4139F766-8AF9-4B87-AA79-70A4F548BBFB}
+		{334D6BBD-992F-4817-B85B-E63E501255E6} = {4139F766-8AF9-4B87-AA79-70A4F548BBFB}
+	EndGlobalSection
+EndGlobal
