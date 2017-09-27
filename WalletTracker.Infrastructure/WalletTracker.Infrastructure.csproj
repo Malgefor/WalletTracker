@@ -49,8 +49,6 @@
     <Compile Include="Web\IWebClient.cs" />
     <Compile Include="Web\WalletAddressInfoProviders\EtherscanClient.cs" />
     <Compile Include="Web\WalletAddressInfoProviders\EthplorerClient.cs" />
-    <Compile Include="Web\WalletAddressInfoProviders\IEtherScanClient.cs" />
-    <Compile Include="Web\WalletAddressInfoProviders\IEthplorerClient.cs" />
     <Compile Include="Web\WebClient.cs" />
   </ItemGroup>
   <ItemGroup>

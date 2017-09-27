@@ -3,6 +3,7 @@ using System.Web.Mvc;
 
 using WalletTracker.Domain.Currency;
 using WalletTracker.Domain.Wallet;
+using WalletTracker.ViewModels;
 
 namespace WalletTracker.Contollers
 {
@@ -16,20 +17,18 @@ namespace WalletTracker.Contollers
             this.walletInfoRepository = walletInfoRepository;
         }
 
-        [Route("view-wallet-info"), HttpGet]
-        public async Task<ActionResult> ViewWalletInfo()
+        [Route("overview"), HttpGet]
+        public ActionResult Overview()
         {
-            var walletInfo = await this.walletInfoRepository.GetWalletInfo(new WalletAddress("0x97FcCA516fE0781922c21475eA9459da25bA70F3", CurrencyType.Ethereum));
-
-            return View(walletInfo);
+            return View("EnterAddress", new WalletInfoViewModel());
         }
 
-        [Route("view-token-info"), HttpGet]
-        public async Task<ActionResult> ViewTokenInfo()
+        [Route("overview"), HttpPost]
+        public async Task<ActionResult> Overview(WalletInfoViewModel viewModel)
         {
-            var walletInfo = await this.walletInfoRepository.GetWalletInfo(new WalletAddress("0x97FcCA516fE0781922c21475eA9459da25bA70F3", CurrencyType.Ethereum));
-
-            return View(walletInfo);
+            var walletInfo = await this.walletInfoRepository.GetWalletInfo(new WalletAddress(viewModel.WalletAddress, CurrencyType.ParseFromSymbol(viewModel.CurrencyType)));
+            
+            return View("ViewWalletInfo", walletInfo);
         }
     }
 }

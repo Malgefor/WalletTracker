@@ -1,13 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-using WalletTracker.Domain.Currency;
-
 namespace WalletTracker.Domain.Wallet
 {
-    public interface IWalletInfoRepository
+    public interface IWalletInfoService
     {
         Task<WalletInfo> GetWalletInfo(WalletAddress address);
-
-        CurrencyType BaseCurrencyType { get; }
     }
 }

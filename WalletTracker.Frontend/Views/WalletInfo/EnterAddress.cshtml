@@ -1,0 +1,15 @@
+﻿@using WalletTracker.ViewModels
+@model WalletInfoViewModel
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Overview", "WalletInfo", FormMethod.Post))
+{
+    @Html.TextAreaFor(model => model.WalletAddress) <br>
+    @Html.DropDownListFor(model => model.CurrencyType, WalletInfoViewModel.CurrencyTypes)
+    <br>
+    
+    <button type="submit" class="btn">Submit</button>
+}

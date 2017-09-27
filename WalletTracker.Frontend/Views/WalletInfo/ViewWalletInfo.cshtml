@@ -5,5 +5,13 @@
 }
 
 Address: @Model.Address.Address <br>
-Name: @Model.Address.Type.Name <br>
-Balance: @Model.TokenBalance
+Currency base type: @Model.Address.BaseType.Name <br> <br>
+
+<b>Balances</b> <br>
+
+@foreach (var token in Model.Tokens)
+{
+    @token.CurrencyType.Name <br>
+    @token.Balance <br>
+    <br>
+}

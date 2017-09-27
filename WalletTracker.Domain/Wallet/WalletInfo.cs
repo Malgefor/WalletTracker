@@ -1,15 +1,19 @@
-﻿namespace WalletTracker.Domain.Wallet
+﻿using System.Collections.Generic;
+
+using WalletTracker.Domain.Token;
+
+namespace WalletTracker.Domain.Wallet
 {
     public class WalletInfo
     {
-        public WalletInfo(WalletAddress address, double tokenBalance)
+        public WalletInfo(WalletAddress address, List<TokenInfo> tokens)
         {
             this.Address = address;
-            this.TokenBalance = tokenBalance;
+            this.Tokens = tokens;
         }
 
-        public WalletAddress Address { get; set; }
+        public WalletAddress Address { get; private set; }
 
-        public double TokenBalance { get; set; }
+        public List<TokenInfo> Tokens { get; private set; }
     }
 }

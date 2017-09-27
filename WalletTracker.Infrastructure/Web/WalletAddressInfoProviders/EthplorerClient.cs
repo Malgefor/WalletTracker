@@ -1,13 +1,16 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json.Linq;
 
+using WalletTracker.Domain.Currency;
+using WalletTracker.Domain.Token;
 using WalletTracker.Domain.Wallet;
 
 namespace WalletTracker.Infrastructure.Web.WalletAddressInfoProviders
 {
-    public class EthplorerClient : IEthplorerClient, IWalletInfoRepository
+    public class EthplorerClient : IWalletInfoRepository
     {
         private readonly IWebClient webClient;
 
@@ -20,16 +23,35 @@ namespace WalletTracker.Infrastructure.Web.WalletAddressInfoProviders
         {
             var apiKey = "freekey";
 
-            var url = $"https://api.ethplorer.io/getTokenInfo/{address.Address}?apikey={apiKey}";
+            var url = $"https://api.ethplorer.io/getAddressInfo/{address.Address}?apiKey={apiKey}";
 
             var result = await this.webClient.GetAsync(url);
 
             return CreateWalletInfo(result, address);
         }
 
+        public CurrencyType BaseCurrencyType => CurrencyType.Ethereum;
+
         private static WalletInfo CreateWalletInfo(JToken result, WalletAddress address)
         {
-            return new WalletInfo(address, result.Value<double>("result"));
+            var tokens = result
+                .SelectToken("tokens")
+                .Select(t => new TokenInfo(GetBalance(t), CurrencyType.ParseFromSymbol(t.SelectToken("tokenInfo").Value<string>("symbol"))))
+                .ToList();
+
+            tokens.Add(new TokenInfo(result.SelectToken("ETH").Value<decimal>("balance"), CurrencyType.Ethereum));
+
+            return new WalletInfo(
+                address,
+                tokens);
+        }
+
+        private static decimal GetBalance(JToken t)
+        {
+            var decimals = (Math.Pow(10, t.SelectToken("tokenInfo").Value<int>("decimals")));
+            var balance = t.Value<decimal>("balance");
+
+            return balance / Convert.ToDecimal(decimals);
         }
     }
 }
