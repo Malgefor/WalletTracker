@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\CoinMarketCapRepository.cs" />
     <Compile Include="Web\IWebClient.cs" />
     <Compile Include="Web\WalletAddressInfoProviders\EtherscanClient.cs" />
     <Compile Include="Web\WalletAddressInfoProviders\EthplorerClient.cs" />

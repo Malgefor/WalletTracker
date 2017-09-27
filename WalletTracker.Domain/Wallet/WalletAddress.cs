@@ -4,14 +4,14 @@ namespace WalletTracker.Domain.Wallet
 {
     public class WalletAddress
     {
-        public WalletAddress(string address, CurrencyType baseType)
+        public WalletAddress(string address, Currency.Currency @base)
         {
             this.Address = address;
-            this.BaseType = baseType;
+            this.Base = @base;
         }
 
         public string Address { get; private set; }
 
-        public CurrencyType BaseType { get; private set; }
+        public Currency.Currency Base { get; private set; }
     }
 }

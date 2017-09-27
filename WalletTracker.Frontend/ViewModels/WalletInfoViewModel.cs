@@ -23,9 +23,9 @@ namespace WalletTracker.ViewModels
                         Selected = true,
                         Disabled = true
                     }
-                }.Concat(Domain.Currency.CurrencyType
+                }.Concat(Domain.Currency.Currency
                     .All()
-                    .Where(c => c.BaseCurrencyType == null)
+                    .Where(c => c.BaseCurrency == null && c.CurrencyType == Domain.Currency.CurrencyType.Crypto)
                     .Select(
                         c => new SelectListItem
                         {

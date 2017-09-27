@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Configuration;
 using System.Threading.Tasks;
-
-using Newtonsoft.Json.Linq;
 
 using WalletTracker.Domain.Currency;
 using WalletTracker.Domain.Wallet;
@@ -32,7 +29,7 @@ namespace WalletTracker.Infrastructure.Web.WalletAddressInfoProviders
             throw new NotImplementedException();
         }
 
-        public CurrencyType CurrencyType => CurrencyType.Ethereum;
+        public Currency Currency => Currency.Ethereum;
 
         //private static WalletInfo CreateWalletInfo(JToken result, WalletAddress address)
         //{

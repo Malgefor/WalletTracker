@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Currency\CurrencyValuePair.cs" />
+    <Compile Include="Currency\CurrencyValueInfo.cs" />
     <Compile Include="Currency\CurrencyType.cs" />
+    <Compile Include="Currency\ICurrencyValueInfoRepository.cs" />
+    <Compile Include="Currency\Currency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Token\TokenInfo.cs" />
     <Compile Include="Wallet\IWalletInfoRepository.cs" />
@@ -49,7 +53,9 @@
     <Compile Include="Wallet\WalletInfo.cs" />
     <Compile Include="Wallet\WalletInfoService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="CurrencyValue\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

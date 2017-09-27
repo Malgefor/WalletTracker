@@ -16,7 +16,7 @@ namespace WalletTracker.Domain.Wallet
 
         public async Task<WalletInfo> GetWalletInfo(WalletAddress address)
         {
-            var selectedRepository = this.walletInfoRepositories.FirstOrDefault(w => w.BaseCurrencyType.Equals(address.BaseType));
+            var selectedRepository = this.walletInfoRepositories.FirstOrDefault(w => w.BaseCurrency.Equals(address.Base));
 
             if (selectedRepository == null)
             {

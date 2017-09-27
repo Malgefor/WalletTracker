@@ -4,14 +4,14 @@ namespace WalletTracker.Domain.Token
 {
     public class TokenInfo
     {
-        public TokenInfo(decimal balance, CurrencyType currencyType)
+        public TokenInfo(decimal balance, Currency.Currency currency)
         {
             this.Balance = balance;
-            this.CurrencyType = currencyType;
+            this.Currency = currency;
         }
 
         public decimal Balance { get; private set; }
 
-        public CurrencyType CurrencyType { get; private set; }
+        public Currency.Currency Currency { get; private set; }
     }
 }

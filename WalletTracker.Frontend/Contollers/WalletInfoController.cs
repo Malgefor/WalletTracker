@@ -10,11 +10,13 @@ namespace WalletTracker.Contollers
     [RoutePrefix("wallet-info")]
     public class WalletInfoController : Controller
     {
-        private readonly IWalletInfoRepository walletInfoRepository;
+        private readonly IWalletInfoService walletInfoRepository;
+        private readonly ICurrencyValueInfoRepository currencyValueInfoRepository;
 
-        public WalletInfoController(IWalletInfoRepository walletInfoRepository)
+        public WalletInfoController(IWalletInfoService walletInfoRepository, ICurrencyValueInfoRepository currencyValueInfoRepository)
         {
             this.walletInfoRepository = walletInfoRepository;
+            this.currencyValueInfoRepository = currencyValueInfoRepository;
         }
 
         [Route("overview"), HttpGet]
@@ -26,7 +28,7 @@ namespace WalletTracker.Contollers
         [Route("overview"), HttpPost]
         public async Task<ActionResult> Overview(WalletInfoViewModel viewModel)
         {
-            var walletInfo = await this.walletInfoRepository.GetWalletInfo(new WalletAddress(viewModel.WalletAddress, CurrencyType.ParseFromSymbol(viewModel.CurrencyType)));
+            var walletInfo = await this.walletInfoRepository.GetWalletInfo(new WalletAddress(viewModel.WalletAddress, Currency.ParseFromSymbol(viewModel.CurrencyType)));
             
             return View("ViewWalletInfo", walletInfo);
         }

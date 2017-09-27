@@ -30,16 +30,16 @@ namespace WalletTracker.Infrastructure.Web.WalletAddressInfoProviders
             return CreateWalletInfo(result, address);
         }
 
-        public CurrencyType BaseCurrencyType => CurrencyType.Ethereum;
+        public Currency BaseCurrency => Currency.Ethereum;
 
         private static WalletInfo CreateWalletInfo(JToken result, WalletAddress address)
         {
             var tokens = result
                 .SelectToken("tokens")
-                .Select(t => new TokenInfo(GetBalance(t), CurrencyType.ParseFromSymbol(t.SelectToken("tokenInfo").Value<string>("symbol"))))
+                .Select(t => new TokenInfo(GetBalance(t), Currency.ParseFromSymbol(t.SelectToken("tokenInfo").Value<string>("symbol"))))
                 .ToList();
 
-            tokens.Add(new TokenInfo(result.SelectToken("ETH").Value<decimal>("balance"), CurrencyType.Ethereum));
+            tokens.Add(new TokenInfo(result.SelectToken("ETH").Value<decimal>("balance"), Currency.Ethereum));
 
             return new WalletInfo(
                 address,
