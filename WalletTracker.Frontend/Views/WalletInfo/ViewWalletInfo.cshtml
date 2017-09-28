@@ -1,17 +1,31 @@
-﻿@model WalletTracker.Domain.Wallet.WalletInfo
+﻿@model WalletTracker.ViewModels.WalletInfoOverviewViewModel
 
 @{
     Layout = null;
 }
 
-Address: @Model.Address.Address <br>
-Currency base type: @Model.Address.Base.Name <br> <br>
+Address: @Model.WalletInfo.Address.Address <br>
+Currency base type: @Model.WalletInfo.Address.Base.Name <br> <br>
 
-<b>Balances</b> <br>
+<h3>Balances</h3>
 
-@foreach (var token in Model.Tokens)
+@foreach (var token in Model.WalletInfo.Tokens)
 {
-    @token.Currency.Name <br>
-    @token.Balance <br>
-    <br>
+    foreach (var currencyValuePairs in Model.CurrencyValueInfo)
+    {
+        if (currencyValuePairs.Currency.Equals(token.Currency))
+        {
+            <h4>@token.Currency.Name</h4>
+            <span>Balance: </span>@token.Balance <br> <br>
+
+            foreach (var currencyValuePair in currencyValuePairs.CurrencyValuePairs)
+            {
+                <span><b>@currencyValuePair.Currency.Name</b></span> <br>
+                <span>Current value per token: @currencyValuePair.Currency.Name </span> <span>@currencyValuePair.CurrentValue </span> <br>
+                <span>Current value total assets in token: @currencyValuePair.Currency.Name </span> <span>@(currencyValuePair.CurrentValue * token.Balance)</span>
+                <br>
+            }
+            <br>
+        }
+    }
 }

@@ -50,7 +50,7 @@ namespace WalletTracker
 
         }
 
-        private void RegisterDependencies()
+        private static void RegisterDependencies()
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());

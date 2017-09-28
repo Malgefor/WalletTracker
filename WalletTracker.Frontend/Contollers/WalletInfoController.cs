@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 using WalletTracker.Domain.Currency;
@@ -29,8 +30,11 @@ namespace WalletTracker.Contollers
         public async Task<ActionResult> Overview(WalletInfoViewModel viewModel)
         {
             var walletInfo = await this.walletInfoRepository.GetWalletInfo(new WalletAddress(viewModel.WalletAddress, Currency.ParseFromSymbol(viewModel.CurrencyType)));
-            
-            return View("ViewWalletInfo", walletInfo);
+            var currencyValueInfosTasks = walletInfo.Tokens.Select(t => this.currencyValueInfoRepository.GetCurrencyValueInfo(t.Currency));
+
+            var walletInfoOverviewViewModel = new WalletInfoOverviewViewModel(walletInfo, (await Task.WhenAll(currencyValueInfosTasks)).ToList());
+
+            return View("ViewWalletInfo", walletInfoOverviewViewModel);
         }
     }
 }

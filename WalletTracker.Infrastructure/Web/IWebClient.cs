@@ -5,6 +5,8 @@ namespace WalletTracker.Infrastructure.Web
 {
     public interface IWebClient
     {
-        Task<JObject> GetAsync(string url);
+        Task<JObject> GetJObjectAsync(string url);
+
+        Task<JArray> GetJArrayAsync(string url);
     }
 }

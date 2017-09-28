@@ -25,7 +25,7 @@ namespace WalletTracker.Infrastructure.Web.WalletAddressInfoProviders
 
             var url = $"https://api.ethplorer.io/getAddressInfo/{address.Address}?apiKey={apiKey}";
 
-            var result = await this.webClient.GetAsync(url);
+            var result = await this.webClient.GetJObjectAsync(url);
 
             return CreateWalletInfo(result, address);
         }

@@ -20,18 +20,20 @@ namespace WalletTracker.Infrastructure.Web
         {
             var url = $"https://api.coinmarketcap.com/v1/ticker/{currency.Name.ToLowerInvariant()}/?convert=EUR";
 
-            var result = await this.webClient.GetAsync(url);
+            var result = await this.webClient.GetJArrayAsync(url);
 
             return CreateCurrencyValueInfo(result, currency);
         }
 
-        private CurrencyValueInfo CreateCurrencyValueInfo(JToken data, Currency currency)
+        private static CurrencyValueInfo CreateCurrencyValueInfo(JToken data, Currency currency)
         {
-            return new CurrencyValueInfo(currency, new List<CurrencyValuePair>
+            var currencyValueInfo = new CurrencyValueInfo(currency, new List<CurrencyValuePair>
             {
-                new CurrencyValuePair(Currency.Euro, data.Value<decimal>("price_eur")),
-                new CurrencyValuePair(Currency.Dollar, data.Value<decimal>("price_usd"))
+                new CurrencyValuePair(Currency.Euro, data[0].Value<decimal>("price_eur")),
+                new CurrencyValuePair(Currency.Dollar, data[0].Value<decimal>("price_usd"))
             });
+
+            return currencyValueInfo;
         }
     }
 }

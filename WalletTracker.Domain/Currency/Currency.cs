@@ -6,9 +6,11 @@ namespace WalletTracker.Domain.Currency
     public class Currency
     {
         //Crypto
+        public static readonly Currency Bitcoin = new Currency("Bitcoin", "BTC", null, CurrencyType.Crypto);
         public static readonly Currency Ethereum = new Currency("Ethereum", "ETH", null, CurrencyType.Crypto);
-        public static readonly Currency Golem = new Currency("Golem", "GNT", Ethereum, CurrencyType.Crypto);
+        public static readonly Currency Golem = new Currency("Golem-Network-Tokens", "GNT", Ethereum, CurrencyType.Crypto);
         public static readonly Currency FunFair = new Currency("FunFair", "FUN", Ethereum, CurrencyType.Crypto);
+        public static readonly Currency Eos = new Currency("EOS", "EOS", Ethereum, CurrencyType.Crypto);
 
         //Fiat
         public static readonly Currency Euro = new Currency("Euro", "EUR", null, CurrencyType.Fiat);
@@ -37,9 +39,11 @@ namespace WalletTracker.Domain.Currency
 
         public static IEnumerable<Currency> All()
         {
+            yield return Bitcoin;
             yield return Ethereum;
             yield return Golem;
             yield return FunFair;
+            yield return Eos;
         }
     }
 }
